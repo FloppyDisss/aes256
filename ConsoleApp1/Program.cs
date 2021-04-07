@@ -17,9 +17,9 @@ namespace ConsoleApp1
             var pubKey = StringToByteArray(publicKeyStr);
             var iv = new byte[12] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
             long time = new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
-            time = 1617801711L;
+            time = 1617801711L; //shit
             var sealedBox = Sodium.SealedPublicKeyBox.Create(key, pubKey);
-            byte[] tag;
+            byte[] tag; 
             var encrypted = AesGcm256.encrypt(word, pubKey, iv, time, out tag);
             var payload = GeneratePayload(BitConverter.GetBytes(PublicKeyId), sealedBox, tag, encrypted); 
             string ToReturn = $"#:{v}:{time}:{payload}";
